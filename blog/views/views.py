@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.template import loader
-from blog.models.models import Task
+from blog.models.task import Task
 from django.shortcuts import get_object_or_404, render
 
 def index(request):
@@ -12,7 +12,3 @@ def index(request):
 def task(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
     return render(request, "blog/task.html", {"task": task})
-
-
-
-
