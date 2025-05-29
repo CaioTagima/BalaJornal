@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .task-list {
+            list-style: none;
+            padding: 0;
+        }
+        .task-item {
+            background: #f9f9f9;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .task-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .task-link {
+            text-decoration: none;
+            color: #2980b9;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .task-link:hover {
+            color: #3498db;
+        }
+        .no-tasks {
+            text-align: center;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Minhas Tarefas</h1>
+
+    {% if latest_add_task %}
+        <ul class="task-list">
+            {% for task in latest_add_task %}
+                <li class="task-item">
+                    <a href="{% url 'blog:task' task.id %}" class="task-link">{{ task.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-tasks">Nenhuma tarefa disponível.</p>
+    {% endif %}
+</body>
+</html>
