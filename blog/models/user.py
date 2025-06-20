@@ -1,14 +1,11 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractBaseUser
 from django.db import models
 
-class User(AbstractUser):
+class User(AbstractBaseUser):
 
     email = models.EmailField(
         primary_key=True,
-        unique=True,
         verbose_name='E-mail',
-        blank=False,  
-        null=False,   
         error_messages={
             'unique': 'Este e-mail já está cadastrado.',
             'blank': 'O e-mail é obrigatório.',
