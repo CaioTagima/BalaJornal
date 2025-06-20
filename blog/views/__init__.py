@@ -1,1 +1,1 @@
-from .views import index, task
+from .blog_view import index, task
