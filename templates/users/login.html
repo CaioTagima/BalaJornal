@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+<body>
+    <div class="container" style="justify-content: flex-start; padding-left: 5em;">
+        <main>
+            <section class="galeria" style="max-width: 400px; width: 100%;">
+                <h1 class="form-title" style="color: #333; text-align: center; margin-bottom: 20px;">Login</h1>
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-grid">
+                        {% for field in form.visible_fields %}
+                        <div class="form-group" style="margin-bottom: 10px;">
+                            <label for="{{ field.id_for_label }}" style="color: #555; font-weight: bold; margin-bottom: 5px; display: block;">
+                                {{ field.label }}
+                            </label>
+                            {{ field }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="submit-button" style="margin-top: 10px;">
+                        <button type="submit" class="btn btn-success" style="width: 100%; padding-top: 5px; padding-bottom: 5px;">
+                            Logar
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
