@@ -64,3 +64,4 @@ def logout(request):
     auth_logout(request)
     messages.success(request, "Logout efetuado com sucesso!")
     return redirect('login')
+
